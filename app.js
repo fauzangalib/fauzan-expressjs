@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const router = require('./routes');
 const log = require('./middlewares/logger');
+const port = process.env.PORT || 4000;
 
 app.use(log);
 app.use(express.urlencoded({extended: true}));
@@ -13,4 +14,6 @@ app.use((req, res) => {
         message: 'Resource' + req.originalUrl + 'Not Found'
     });
 });
-app.listen(3000, () => console.log('Server: http://localhost:3000'))
+app.listen(port, function() {
+    console.log(`Server Starts on ${port}`)
+});
