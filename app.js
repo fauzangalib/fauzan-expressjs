@@ -7,7 +7,7 @@ app.use(log);
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(router);
-app.use((req, res, next) => {
+app.use((req, res) => {
     res.send({
         status: 'failed',
         message: 'Resource' + req.originalUrl + 'Not Found'
